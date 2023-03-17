@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1078801674894312628}
   m_Layer: 0
   m_Name: Racket
-  m_TagString: Untagged
+  m_TagString: Racket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,3 +123,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  limitHorizontal: 2.2
+  isUp: 0

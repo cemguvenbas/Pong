@@ -5,7 +5,9 @@ using UnityEngine;
 public class RacketController : MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] private float limitHorizontal = 2.2f;
+    [SerializeField] private float limitHorizontal;
+
+    public bool isUp;
     private void Update()
     {
         var input = Input.GetAxis("Horizontal");
