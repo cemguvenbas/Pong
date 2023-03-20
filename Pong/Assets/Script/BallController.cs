@@ -10,9 +10,9 @@ public class BallController : MonoBehaviour
     {
         Instance = this;
     }
-    private void Start()
+    public void OnStart()
     {
-        rigidbody2D.AddForce(Vector2.up * speed);
+        rigidbody2D.AddForce(Vector2.down * speed);
     }
 
     // Update is called once per frame
