@@ -1,12 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
+    public static BallController Instance { get; private set; }
     [SerializeField] private Rigidbody2D rigidbody2D;
     [SerializeField] private float speed;
-    void Start()
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+    private void Start()
     {
         rigidbody2D.AddForce(Vector2.up * speed);
     }
@@ -22,8 +26,11 @@ public class BallController : MonoBehaviour
         if (collision.transform.CompareTag("Racket"))
         {
             var racket = collision.transform.GetComponent<RacketController>();
-            var direction = racket.isUp ? Vector2.down : Vector2.up;
-            rigidbody2D.AddForce(direction);
+            var directionVertical = racket.isUp ? -1 : 1;
+
+            var directionHorizontal = (transform.position.x - racket.transform.position.x) / collision.collider.bounds.extents.x;
+            
+            rigidbody2D.AddForce(new Vector2(directionHorizontal,directionVertical).normalized * speed);
         }
     }
 }
